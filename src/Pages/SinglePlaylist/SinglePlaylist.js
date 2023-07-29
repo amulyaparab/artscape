@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { usePlaylist } from "../Contexts/PlaylistProvider";
-import { VideoCard } from "../Components/VideoCard/VideoCard";
+import { usePlaylist } from "../../Contexts/PlaylistProvider";
+import { VideoCard } from "../../Components/VideoCard/VideoCard";
 
 export const SinglePlaylist = () => {
   const { playlistId } = useParams();

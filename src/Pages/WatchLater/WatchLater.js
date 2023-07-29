@@ -1,5 +1,5 @@
-import { VideoCard } from "../Components/VideoCard/VideoCard";
-import { useVideos } from "../Contexts/VideoProvider";
+import { VideoCard } from "../../Components/VideoCard/VideoCard";
+import { useVideos } from "../../Contexts/VideoProvider";
 
 export const WatchLater = () => {
   const { videoState } = useVideos();
