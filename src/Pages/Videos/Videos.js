@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useVideos } from "../../Contexts/VideoProvider";
 import { VideoCard } from "../../Components/VideoCard/VideoCard";
-
 export const Videos = () => {
   const { categoryName } = useParams();
 

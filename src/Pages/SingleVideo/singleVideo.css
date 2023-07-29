@@ -1,0 +1,37 @@
+.single-video-page {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  justify-content: space-evenly;
+}
+.single-video {
+  width: 70%;
+  padding: 3rem;
+}
+.single-video .single-video-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.more-videos {
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+  height: 80vh;
+  margin: auto;
+  padding: 2rem 0;
+  margin: 2rem 0;
+}
+.more-videos::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Thumb */
+.more-videos::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* Handle on hover */
+.more-videos::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

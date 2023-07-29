@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useCategory } from "../../Contexts/CategoryProvider";
 import "./videoCard.css";
 export const VideoCard = ({
@@ -14,8 +15,15 @@ export const VideoCard = ({
   const findCategory = categoryState.categories.find(
     (currCategory) => currCategory.category === category
   );
+  const navigate = useNavigate();
   return (
-    <div className="video-card">
+    <div
+      className="video-card"
+      onClick={() => {
+        console.log("hidf");
+        navigate(`/singleVideo/${_id}`);
+      }}
+    >
       <img className="video-img" src={thumbnail} alt={title} />
       <div className="details">
         <img
