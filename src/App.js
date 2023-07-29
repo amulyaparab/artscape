@@ -9,12 +9,16 @@ import { WatchLater } from "./Pages/WatchLater";
 import { SingleVideo } from "./Pages/SingleVideo/SingleVideo";
 import { SinglePlaylist } from "./Pages/SinglePlaylist";
 import { Navbar } from "./Components/Navbar/Navbar";
+import { PlaylistForm } from "./Components/PlaylistForm/PlaylistForm";
+import { usePlaylist } from "./Contexts/PlaylistProvider";
 function App() {
+  const { showAddPlaylistForm } = usePlaylist();
   return (
     <>
       <Navbar />
       <div className="App page-divider">
         <SideNav />
+        {showAddPlaylistForm && <PlaylistForm />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />

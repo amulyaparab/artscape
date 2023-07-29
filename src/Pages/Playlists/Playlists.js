@@ -1,6 +1,7 @@
 import "./playlists.css";
 import { usePlaylist } from "../../Contexts/PlaylistProvider";
 import { useNavigate } from "react-router-dom";
+import { PlaylistForm } from "../../Components/PlaylistForm/PlaylistForm";
 export const Playlists = () => {
   const {
     playlistDispatch,
@@ -40,8 +41,8 @@ export const Playlists = () => {
           onClick={() => setShowAddPlaylistForm(true)}
         ></i>
       </div>
-      {showAddPlaylistForm && (
-        <div className="overlay">
+      {/* {showAddPlaylistForm && <PlaylistForm />} */}
+      {/* <div className="overlay">
           <form
             className="form"
             onSubmit={(event) => {
@@ -86,8 +87,7 @@ export const Playlists = () => {
               <button type="submit">Create New Playlist</button>
             </div>
           </form>
-        </div>
-      )}
+        </div> */}
     </div>
   );
 };

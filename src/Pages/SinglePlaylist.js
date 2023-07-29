@@ -7,10 +7,16 @@ export const SinglePlaylist = () => {
   const findPlaylist = playlistState.playlists.find(
     (playlist) => playlist?._id === playlistId
   );
-  console.log(findPlaylist);
+  // singlePlaylist: {
+  //   _id: "",
+  //   playlistThumbnail: "https://picsum.photos/300/200",
+  //   name: "",
+  //   description: "",
+  // },
   return (
     <div className="page">
-      <h1 className="heading">SinglePlaylist</h1>
+      <h1 className="heading">{findPlaylist?.name}</h1>
+      <p>{findPlaylist?.description}</p>
     </div>
   );
 };
