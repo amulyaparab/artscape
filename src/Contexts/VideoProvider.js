@@ -29,14 +29,41 @@ export const VideoProvider = ({ children }) => {
               .includes(action.payload.toLowerCase().trim())
           ),
         };
+      case "ADD_NOTES":
+        return {
+          ...videoState,
+          allVideos: videoState.allVideos.map((video) =>
+            video._id === Number(action.idPayload)
+              ? {
+                  ...video,
+                  notes: [...video?.notes, videoState.note],
+                }
+              : video
+          ),
+        };
+      case "STORE_NOTE":
+        return { ...videoState, note: action.payload };
+      // case "STORE_NOTE":
+      //   return {
+      //     ...videoState,
+      //     allVideos: videoState.allVideos.map((video) =>
+      //       video._id === Number(action.idPayload)
+      //         ? {
+      //             ...video,
+      //             notes: [...video?.notes, { content: action.payload }],
+      //           }
+      //         : video
+      //     ),
+      //   };
       default:
         return videoState;
     }
   };
   const initialState = {
-    allVideos: videos,
+    allVideos: videos.map((video) => ({ ...video, notes: [] })),
     filteredVideos: videos,
     watchLater: [],
+    note: "",
   };
   const [videoState, videoDispatch] = useReducer(videoReducer, initialState);
   const isVideoInWatchLater = (_id) =>

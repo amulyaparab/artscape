@@ -2,12 +2,14 @@ import { useParams } from "react-router-dom";
 import { useVideos } from "../../Contexts/VideoProvider";
 import { VideoCard } from "../../Components/VideoCard/VideoCard";
 import "./singleVideo.css";
+import { useState } from "react";
 export const SingleVideo = () => {
   const { videoId } = useParams();
   const { videoState, isVideoInWatchLater, videoDispatch } = useVideos();
   const findVideo = videoState.allVideos.find(
     (video) => video._id === Number(videoId)
   );
+  const [showNotesForm, setShowNotesForm] = useState(false);
   return (
     <div className="page">
       <div className="single-video-page">
@@ -46,11 +48,33 @@ export const SingleVideo = () => {
                 ></i>
               )}
               <i class="fa-solid fa-clipboard-list"></i>
-              <i class="fa-solid fa-file-pen"></i>
+              <i
+                class="fa-solid fa-note-sticky"
+                onClick={() => setShowNotesForm(true)}
+              ></i>
             </div>
           </div>
           <hr />
           <h1>My Notes</h1>
+          {showNotesForm && (
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                videoDispatch({ type: "ADD_NOTES", idPayload: videoId });
+              }}
+            >
+              <input
+                required
+                onChange={(event) =>
+                  videoDispatch({
+                    type: "STORE_NOTE",
+                    payload: event.target.value,
+                  })
+                }
+              />
+              <button>Add new note</button>
+            </form>
+          )}
         </div>
         <div>
           <h3>More Videos:</h3>
