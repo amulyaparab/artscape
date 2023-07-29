@@ -1,7 +1,7 @@
 export const SinglePlaylist = () => {
   return (
-    <>
-      <h1>SinglePlaylist</h1>
-    </>
+    <div className="page">
+      <h1 className="heading">SinglePlaylist</h1>
+    </div>
   );
 };

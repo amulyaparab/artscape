@@ -1,1 +1,23 @@
-
+.side-nav {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100vh;
+  background-color: black;
+  text-align: start;
+  padding: 3rem 2rem;
+}
+a {
+  text-decoration: none;
+  padding: 1rem 0.2rem;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+a:hover {
+  color: aquamarine;
+}
+i {
+  padding: 0 0.7rem;
+}

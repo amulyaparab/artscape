@@ -10,7 +10,7 @@ import { SingleVideo } from "./Pages/SingleVideo";
 import { SinglePlaylist } from "./Pages/SinglePlaylist";
 function App() {
   return (
-    <div className="App">
+    <div className="App page-divider">
       <SideNav />
       <Routes>
         <Route path="/" element={<Home />} />

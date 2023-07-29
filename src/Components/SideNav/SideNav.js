@@ -3,12 +3,19 @@ import "./sidenav.css";
 export const SideNav = () => {
   return (
     <>
-      <h1>SideNav</h1>
       <div className="side-nav">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/explore">Explore</NavLink>
-        <NavLink to="/allPlaylists">Playlists</NavLink>
-        <NavLink to="/watchLater">Watch Later</NavLink>
+        <NavLink to="/">
+          <i class="fa-solid fa-house"></i>Home
+        </NavLink>
+        <NavLink to="/explore">
+          <i class="fa-solid fa-earth-americas"></i>Explore
+        </NavLink>
+        <NavLink to="/allPlaylists">
+          <i class="fa-solid fa-clipboard-list"></i>Playlists
+        </NavLink>
+        <NavLink to="/watchLater">
+          <i class="fa-solid fa-earth-americas"></i>Watch Later
+        </NavLink>
       </div>
     </>
   );

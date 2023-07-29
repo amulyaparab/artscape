@@ -1,7 +1,7 @@
 export const Videos = () => {
   return (
-    <>
-      <h1>Videos</h1>
-    </>
+    <div className="page">
+      <h1 className="heading">Videos</h1>
+    </div>
   );
 };

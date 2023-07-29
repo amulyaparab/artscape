@@ -1,7 +1,7 @@
 export const WatchLater = () => {
   return (
-    <>
-      <h1>WatchLater</h1>
-    </>
+    <div className="page">
+      <h1 className="heading">WatchLater</h1>
+    </div>
   );
 };
