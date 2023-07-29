@@ -47,10 +47,12 @@ i {
 }
 .page {
   width: 100%;
-  /* border: 1px solid black; */
 }
 .videos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.plus-btn {
+  font-size: 40px;
 }

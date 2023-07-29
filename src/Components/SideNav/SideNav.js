@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "./sidenav.css";
+import { usePlaylist } from "../../Contexts/PlaylistProvider";
 export const SideNav = () => {
+  const { setShowAddPlaylistForm } = usePlaylist();
   return (
     <>
       <div className="side-nav">
@@ -15,6 +17,10 @@ export const SideNav = () => {
         </NavLink>
         <NavLink to="/watchLater">
           <i class="fa-solid fa-earth-americas"></i>Watch Later
+        </NavLink>
+        <NavLink onClick={() => setShowAddPlaylistForm(true)}>
+          <i class="fa-solid fa-circle-plus plus-btn-center"></i>
+          Create Playlist
         </NavLink>
       </div>
     </>

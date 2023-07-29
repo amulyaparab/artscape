@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { SideNav } from "./Components/SideNav/SideNav";
 import { Home } from "./Pages/Home/Home";
 import { Explore } from "./Pages/Explore/Explore";
-import { Playlists } from "./Pages/Playlists";
+import { Playlists } from "./Pages/Playlists/Playlists";
 import { Videos } from "./Pages/Videos/Videos";
 import { WatchLater } from "./Pages/WatchLater";
 import { SingleVideo } from "./Pages/SingleVideo/SingleVideo";
@@ -21,7 +21,7 @@ function App() {
           <Route path="/allPlaylists" element={<Playlists />} />
           <Route path="/videos/:categoryName" element={<Videos />} />
           <Route path="/watchLater" element={<WatchLater />} />
-          <Route path="/singlePlaylist" element={<SinglePlaylist />} />
+          <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
           <Route path="/singleVideo/:videoId" element={<SingleVideo />} />
         </Routes>
       </div>

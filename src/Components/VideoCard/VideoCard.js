@@ -30,8 +30,8 @@ export const VideoCard = ({
       <img className="video-img" src={thumbnail} alt={title} />
       <div
         className="watch-later-icon"
-        onClick={(e) => {
-          e.stopPropagation();
+        onClick={(event) => {
+          event.stopPropagation();
           isVideoInWatchLater(_id)
             ? videoDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: _id })
             : videoDispatch({ type: "ADD_TO_WATCH_LATER", payload: _id });
