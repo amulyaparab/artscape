@@ -30,12 +30,17 @@
   top: 0;
   right: 0;
   background-color: aliceblue;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 5px;
+  border-radius: 0 10px;
+  cursor: pointer;
 }
 .video-card .watch-later-icon i {
   color: navy;
 }
+.video-card .watch-later-icon:hover {
+  background-color: rgb(178, 236, 255);
+}
+
 /* .categories {
   display: flex;
   flex-wrap: wrap;

@@ -1,0 +1,14 @@
+.navbar {
+  background-image: url("https://images.unsplash.com/photo-1583443965608-57b6bc3198e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
+  margin: 0;
+  padding: 0.2rem 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.navbar h1 {
+  padding: 0 0 0 5rem;
+  font-size: xx-large;
+}

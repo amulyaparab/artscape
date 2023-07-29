@@ -47,7 +47,7 @@ i {
 }
 .page {
   width: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .videos {
   display: flex;
