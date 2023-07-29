@@ -7,7 +7,6 @@ const PlaylistContext = createContext();
 export const PlaylistProvider = ({ children }) => {
   const { videoState } = useVideos();
   const playlistReducer = (playlistState, action) => {
-    console.log(action.type);
     switch (action.type) {
       case "PLAYLIST_NAME":
         return {
@@ -26,7 +25,6 @@ export const PlaylistProvider = ({ children }) => {
           },
         };
       case "CLEAR_FORM":
-        console.log("sdf");
         return {
           ...playlistState,
           singlePlaylist: {
@@ -53,11 +51,11 @@ export const PlaylistProvider = ({ children }) => {
           },
         };
       case "DELETE_FROM_PLAYLISTS":
-        console.log(
-          playlistState?.playlists?.filter(
-            (playlist) => playlist._id !== action.payload
-          )
-        );
+        // console.log(
+        //   playlistState?.playlists?.filter(
+        //     (playlist) => playlist._id !== action.payload
+        //   )
+        // );
 
         return {
           ...playlistState,
@@ -94,7 +92,7 @@ export const PlaylistProvider = ({ children }) => {
   };
 
   const initialState = {
-    playlists: [],
+    playlists: JSON.parse(localStorage.getItem("playlists")) || [],
     videoId: "",
     singlePlaylist: {
       _id: "",
@@ -110,12 +108,9 @@ export const PlaylistProvider = ({ children }) => {
   );
   const [showAddPlaylistForm, setShowAddPlaylistForm] = useState(false);
 
-  // useEffect(() => {
-  //   localStorage.setItem(
-  //     "playlists",
-  //     JSON.stringify(playlistState?.playlists) || []
-  //   );
-  // }, [playlistState?.playlists]);
+  useEffect(() => {
+    localStorage.setItem("playlists", JSON.stringify(playlistState?.playlists));
+  }, [playlistState?.playlists]);
 
   return (
     <PlaylistContext.Provider

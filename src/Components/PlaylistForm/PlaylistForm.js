@@ -48,12 +48,7 @@ export const PlaylistForm = () => {
               }
             />
           </label>
-          <button
-            type="submit"
-            // onClick={() => playlistDispatch({ type: "CLEAR_FORM" })}
-          >
-            Create New Playlist
-          </button>
+          <button type="submit">Create New Playlist</button>
         </div>
         <hr />
         {playlistState?.playlists?.map((playlist) => (
@@ -63,6 +58,7 @@ export const PlaylistForm = () => {
               cursor: playlistState?.videoId ? "pointer" : "not-allowed",
             }}
             onClick={() =>
+              playlistState?.videoId &&
               playlistDispatch({
                 type: "ADD_VIDEO_TO_PLAYLIST",
                 payload: playlist?._id,

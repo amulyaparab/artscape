@@ -6,7 +6,7 @@ export const Home = () => {
   const navigate = useNavigate();
   return (
     <div className="page">
-      <h1 className="heading">Home</h1>
+      <h1>Home</h1>
       <div className="categories">
         {categoryState.categories.map(({ _id, thumbnail, src, category }) => (
           <div className="category" key={_id}>

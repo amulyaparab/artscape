@@ -62,12 +62,12 @@ export const VideoProvider = ({ children }) => {
           ),
         };
       case "GIVE_EDIT_VALUE":
-        console.log(
-          videoState.allVideos
-            .find((video) => video._id === Number(action.idPayload))
-            ?.notes?.find((note) => note._id === action.payload)?.content,
-          "lifa"
-        );
+        // console.log(
+        //   videoState.allVideos
+        //     .find((video) => video._id === Number(action.idPayload))
+        //     ?.notes?.find((note) => note._id === action.payload)?.content,
+        //   "lifa"
+        // );
         return {
           ...videoState,
           note: videoState.allVideos

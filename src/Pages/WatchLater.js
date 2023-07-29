@@ -5,7 +5,7 @@ export const WatchLater = () => {
   const { videoState } = useVideos();
   return (
     <div className="page">
-      <h1 className="heading">Watch Later</h1>
+      <h1>Watch Later</h1>
       {videoState?.watchLater?.length ? (
         <div className="videos">
           {videoState?.watchLater?.map((video) => (

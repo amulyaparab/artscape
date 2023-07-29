@@ -6,7 +6,7 @@ export const Explore = () => {
 
   return (
     <div className="page">
-      <h1 className="heading">Explore</h1>
+      <h1>Explore</h1>
       <input
         onChange={(event) =>
           videoDispatch({ type: "FILTER_VIDEOS", payload: event.target.value })

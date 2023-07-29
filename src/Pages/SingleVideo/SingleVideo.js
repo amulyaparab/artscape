@@ -23,7 +23,7 @@ export const SingleVideo = () => {
     <div className="page">
       <div className="single-video-page">
         <div className="single-video">
-          <h1 className="heading">SingleVideo</h1>
+          <h1>SingleVideo</h1>
           <iframe
             width="800"
             height="500"

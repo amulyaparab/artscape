@@ -11,7 +11,7 @@ export const SinglePlaylist = () => {
 
   return (
     <div className="page">
-      <h1 className="heading">{findPlaylist?.name}</h1>
+      <h1>{findPlaylist?.name}</h1>
       <p>{findPlaylist?.description}</p>
       <div>
         {findPlaylist?.videos?.length ? (

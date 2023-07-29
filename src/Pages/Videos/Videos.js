@@ -11,7 +11,7 @@ export const Videos = () => {
 
   return (
     <div className="page">
-      <h1 className="heading">{categoryName} Videos</h1>
+      <h1>{categoryName} Videos</h1>
       <div className="videos">
         {videosInCurrCategory.map((video) => (
           <VideoCard {...video} category={categoryName} />
