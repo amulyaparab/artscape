@@ -20,12 +20,22 @@ export const VideoProvider = ({ children }) => {
             ({ _id }) => _id !== action.payload
           ),
         };
+      case "FILTER_VIDEOS":
+        return {
+          ...videoState,
+          filteredVideos: videoState.allVideos.filter((video) =>
+            video.title
+              .toLowerCase()
+              .includes(action.payload.toLowerCase().trim())
+          ),
+        };
       default:
         return videoState;
     }
   };
   const initialState = {
     allVideos: videos,
+    filteredVideos: videos,
     watchLater: [],
   };
   const [videoState, videoDispatch] = useReducer(videoReducer, initialState);

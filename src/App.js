@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { SideNav } from "./Components/SideNav/SideNav";
 import { Home } from "./Pages/Home/Home";
-import { Explore } from "./Pages/Explore";
+import { Explore } from "./Pages/Explore/Explore";
 import { Playlists } from "./Pages/Playlists";
 import { Videos } from "./Pages/Videos/Videos";
 import { WatchLater } from "./Pages/WatchLater";
