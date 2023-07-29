@@ -11,12 +11,14 @@ export const SingleVideo = () => {
     (video) => video._id === Number(videoId)
   );
   const [showNotesForm, setShowNotesForm] = useState(false);
-  const { setShowAddPlaylistForm, playlistDispatch } = usePlaylist();
+  const { setShowAddPlaylistForm, playlistDispatch, playlistState } =
+    usePlaylist();
   const playlistHandler = () => {
     playlistDispatch({ type: "STORE_ID", payload: videoId });
-    // idPayload;
+
     setShowAddPlaylistForm(true);
   };
+
   return (
     <div className="page">
       <div className="single-video-page">
@@ -66,38 +68,58 @@ export const SingleVideo = () => {
           </div>
           <hr />
           <h1>My Notes</h1>
-
           {showNotesForm && (
             <form
               className="note-form"
               onSubmit={(event) => {
                 event.preventDefault();
+
                 videoDispatch({ type: "ADD_NOTES", idPayload: videoId });
+                setShowNotesForm(false);
               }}
             >
-              <textarea
+              <input
                 required
+                value={videoState?.note}
                 onChange={(event) =>
                   videoDispatch({
                     type: "STORE_NOTE",
                     payload: event.target.value,
                   })
                 }
-              ></textarea>
-              <button className="note-btn">Add new note</button>
+              />
+              {videoState?.noteId?.length ? (
+                <button className="note-btn">Edit</button>
+              ) : (
+                <button className="note-btn">Add new note</button>
+              )}
             </form>
           )}
+
           {findVideo?.notes?.map((note) => (
             <div className="note">
-              <span>{note}</span>
+              <span>{note.content}</span>
               <span>
                 <i
                   class="fa-regular fa-pen-to-square"
-                  onClick={() => videoDispatch({ type: "EDIT_NOTE" })}
+                  onClick={() => {
+                    videoDispatch({
+                      type: "GIVE_EDIT_VALUE",
+                      payload: note?._id,
+                      idPayload: videoId,
+                    });
+                    setShowNotesForm(true);
+                  }}
                 ></i>
                 <i
                   class="fa-regular fa-circle-xmark"
-                  onClick={() => videoDispatch({ type: "DELETE_NOTE" })}
+                  onClick={() =>
+                    videoDispatch({
+                      type: "DELETE_NOTE",
+                      payload: note?._id,
+                      idPayload: videoId,
+                    })
+                  }
                 ></i>
               </span>
             </div>
@@ -117,13 +139,3 @@ export const SingleVideo = () => {
     </div>
   );
 };
-// {
-//   _id: 34,
-//   title: "Stop Motion Animation Tips and Tricks",
-//   views: 3172,
-//   chips: ["stop motion", "animation", "tips", "tricks"],
-//   thumbnail: "https://picsum.photos/310/174",
-//   src: "https://www.youtube.com/embed/GBIIQ0kP15E",
-//   category: "Stop Motion",
-//   creator: "AnimateMagic",
-// },

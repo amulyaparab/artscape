@@ -76,7 +76,7 @@ export const PlaylistProvider = ({ children }) => {
             ),
             videoId: "",
           };
-        }
+        } else return;
 
       default:
         return playlistState;
@@ -98,7 +98,6 @@ export const PlaylistProvider = ({ children }) => {
     initialState
   );
   const [showAddPlaylistForm, setShowAddPlaylistForm] = useState(false);
-  console.log(playlistState);
 
   return (
     <PlaylistContext.Provider

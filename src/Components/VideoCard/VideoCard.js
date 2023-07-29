@@ -20,13 +20,7 @@ export const VideoCard = ({
   const navigate = useNavigate();
 
   return (
-    <div
-      className="video-card"
-      onClick={() => {
-        console.log("hidf");
-        navigate(`/singleVideo/${_id}`);
-      }}
-    >
+    <div className="video-card" onClick={() => navigate(`/singleVideo/${_id}`)}>
       <img className="video-img" src={thumbnail} alt={title} />
       <div
         className="watch-later-icon"
@@ -61,13 +55,3 @@ export const VideoCard = ({
     </div>
   );
 };
-// {
-//   _id: 33,
-//   title: "Sculpting Realistic Portraits - Mastering Human Faces",
-//   views: 2251,
-//   chips: ["sculpture", "realistic portraits", "clay", "human faces"],
-//   thumbnail: "https://picsum.photos/309/174",
-//   src: "https://www.youtube.com/embed/GBIIQ0kP15E",
-//   category: "Clay Modeling",
-//   creator: "PortraitsInClay",
-// },

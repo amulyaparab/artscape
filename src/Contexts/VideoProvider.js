@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { videos } from "../Database/videoData";
+import { v4 as uuid } from "uuid";
 const VideoContext = createContext();
 
 export const VideoProvider = ({ children }) => {
@@ -36,25 +37,66 @@ export const VideoProvider = ({ children }) => {
             video._id === Number(action.idPayload)
               ? {
                   ...video,
-                  notes: [...video?.notes, videoState.note],
+                  notes: [
+                    ...video?.notes,
+                    { content: videoState.note, _id: uuid() },
+                  ],
+                }
+              : video
+          ),
+          note: "",
+        };
+      case "DELETE_NOTE":
+        return {
+          ...videoState,
+          allVideos: videoState.allVideos.map((video) =>
+            video._id === Number(action.idPayload)
+              ? {
+                  ...video,
+                  notes: video?.notes?.filter(
+                    (note) => note._id !== action.payload
+                  ),
                 }
               : video
           ),
         };
+      case "GIVE_EDIT_VALUE":
+        console.log(
+          videoState.allVideos
+            .find((video) => video._id === Number(action.idPayload))
+            ?.notes?.find((note) => note._id === action.payload)?.content,
+          "lifa"
+        );
+        return {
+          ...videoState,
+          note: videoState.allVideos
+            .find((video) => video._id === Number(action.idPayload))
+            ?.notes?.find((note) => note._id === action.payload)?.content,
+
+          noteId: action.payload,
+        };
+      case "NOTE_ID":
+        return { ...videoState, noteId: action.payload };
+      case "EDIT_NOTE":
+        return {
+          ...videoState,
+          allVideos: videoState.allVideos.map((video) =>
+            video._id === Number(action.idPayload)
+              ? {
+                  ...video,
+                  notes: video.notes.map((note) =>
+                    note._id === action.payload
+                      ? { ...note, content: action.contentPayload }
+                      : note
+                  ),
+                }
+              : video
+          ),
+          noteId: "",
+        };
       case "STORE_NOTE":
         return { ...videoState, note: action.payload };
-      // case "STORE_NOTE":
-      //   return {
-      //     ...videoState,
-      //     allVideos: videoState.allVideos.map((video) =>
-      //       video._id === Number(action.idPayload)
-      //         ? {
-      //             ...video,
-      //             notes: [...video?.notes, { content: action.payload }],
-      //           }
-      //         : video
-      //     ),
-      //   };
+
       default:
         return videoState;
     }
@@ -63,6 +105,7 @@ export const VideoProvider = ({ children }) => {
     allVideos: videos.map((video) => ({ ...video, notes: [] })),
     filteredVideos: videos,
     watchLater: [],
+    noteId: "",
     note: "",
   };
   const [videoState, videoDispatch] = useReducer(videoReducer, initialState);

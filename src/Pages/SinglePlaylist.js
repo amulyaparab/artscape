@@ -8,19 +8,16 @@ export const SinglePlaylist = () => {
   const findPlaylist = playlistState.playlists.find(
     (playlist) => playlist?._id === playlistId
   );
-  // singlePlaylist: {
-  //   _id: "",
-  //   playlistThumbnail: "https://picsum.photos/300/200",
-  //   name: "",
-  //   description: "",
-  // },
+
   return (
     <div className="page">
       <h1 className="heading">{findPlaylist?.name}</h1>
       <p>{findPlaylist?.description}</p>
       <div>
-        {findPlaylist?.videos?.map((video) =>
-          findPlaylist?.videos?.length ? <VideoCard {...video} /> : null
+        {findPlaylist?.videos?.length ? (
+          findPlaylist?.videos?.map((video) => <VideoCard {...video} />)
+        ) : (
+          <h2>No videos here.</h2>
         )}
       </div>
     </div>

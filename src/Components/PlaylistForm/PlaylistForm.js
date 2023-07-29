@@ -10,7 +10,6 @@ export const PlaylistForm = () => {
         onSubmit={(event) => {
           event.preventDefault();
           playlistDispatch({ type: "CREATE_PLAYLIST" });
-          // setShowAddPlaylistForm(false);
         }}
       >
         <i
