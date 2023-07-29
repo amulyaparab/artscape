@@ -5,7 +5,7 @@ import { VideoCard } from "../Components/VideoCard/VideoCard";
 export const SinglePlaylist = () => {
   const { playlistId } = useParams();
   const { playlistState } = usePlaylist();
-  const findPlaylist = playlistState.playlists.find(
+  const findPlaylist = playlistState?.playlists?.find(
     (playlist) => playlist?._id === playlistId
   );
 

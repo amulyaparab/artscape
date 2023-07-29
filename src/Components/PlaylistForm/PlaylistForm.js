@@ -10,6 +10,7 @@ export const PlaylistForm = () => {
         onSubmit={(event) => {
           event.preventDefault();
           playlistDispatch({ type: "CREATE_PLAYLIST" });
+          playlistDispatch({ type: "CLEAR_FORM" });
         }}
       >
         <i
@@ -24,6 +25,7 @@ export const PlaylistForm = () => {
           <label>
             Name of Playlist:
             <input
+              value={playlistState?.singlePlaylist?.name}
               required
               onChange={(event) =>
                 playlistDispatch({
@@ -36,6 +38,7 @@ export const PlaylistForm = () => {
           <label>
             Description:
             <input
+              value={playlistState?.singlePlaylist?.description}
               required
               onChange={(event) =>
                 playlistDispatch({
@@ -45,10 +48,15 @@ export const PlaylistForm = () => {
               }
             />
           </label>
-          <button type="submit">Create New Playlist</button>
+          <button
+            type="submit"
+            // onClick={() => playlistDispatch({ type: "CLEAR_FORM" })}
+          >
+            Create New Playlist
+          </button>
         </div>
         <hr />
-        {playlistState?.playlists.map((playlist) => (
+        {playlistState?.playlists?.map((playlist) => (
           <div
             className="form-playlists"
             style={{
@@ -64,12 +72,13 @@ export const PlaylistForm = () => {
             <p>{playlist.name}</p>
             <i
               class="fa-regular fa-circle-xmark"
-              onClick={() =>
+              onClick={(e) => {
+                e.stopPropagation();
                 playlistDispatch({
                   type: "DELETE_FROM_PLAYLISTS",
                   payload: playlist?._id,
-                })
-              }
+                });
+              }}
             ></i>
           </div>
         ))}

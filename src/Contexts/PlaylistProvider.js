@@ -7,12 +7,13 @@ const PlaylistContext = createContext();
 export const PlaylistProvider = ({ children }) => {
   const { videoState } = useVideos();
   const playlistReducer = (playlistState, action) => {
+    console.log(action.type);
     switch (action.type) {
       case "PLAYLIST_NAME":
         return {
           ...playlistState,
           singlePlaylist: {
-            ...playlistState.singlePlaylist,
+            ...playlistState?.singlePlaylist,
             name: action.payload,
           },
         };
@@ -20,11 +21,12 @@ export const PlaylistProvider = ({ children }) => {
         return {
           ...playlistState,
           singlePlaylist: {
-            ...playlistState.singlePlaylist,
+            ...playlistState?.singlePlaylist,
             description: action.payload,
           },
         };
       case "CLEAR_FORM":
+        console.log("sdf");
         return {
           ...playlistState,
           singlePlaylist: {
@@ -39,10 +41,11 @@ export const PlaylistProvider = ({ children }) => {
         return {
           ...playlistState,
           playlists: [
-            ...playlistState.playlists,
-            { ...playlistState.singlePlaylist, _id: uuid() },
+            ...playlistState?.playlists,
+            { ...playlistState?.singlePlaylist, _id: uuid() },
           ],
           singlePlaylist: {
+            _id: "",
             playlistThumbnail: "https://picsum.photos/300/200",
             name: "",
             description: "",
@@ -50,26 +53,32 @@ export const PlaylistProvider = ({ children }) => {
           },
         };
       case "DELETE_FROM_PLAYLISTS":
+        console.log(
+          playlistState?.playlists?.filter(
+            (playlist) => playlist._id !== action.payload
+          )
+        );
+
         return {
           ...playlistState,
-          playlists: playlistState.playlists.filter(
+          playlists: playlistState?.playlists?.filter(
             (playlist) => playlist._id !== action.payload
           ),
         };
       case "STORE_ID":
         return { ...playlistState, videoId: action.payload };
       case "ADD_VIDEO_TO_PLAYLIST":
-        if (playlistState.videoId) {
+        if (playlistState?.videoId) {
           return {
             ...playlistState,
-            playlists: playlistState.playlists.map((playlist) =>
+            playlists: playlistState?.playlists?.map((playlist) =>
               playlist._id === action.payload
                 ? {
                     ...playlist,
                     videos: [
                       ...playlist.videos,
                       videoState.allVideos.find(
-                        (video) => video._id === Number(playlistState.videoId)
+                        (video) => video._id === Number(playlistState?.videoId)
                       ),
                     ],
                   }
@@ -83,8 +92,9 @@ export const PlaylistProvider = ({ children }) => {
         return playlistState;
     }
   };
+
   const initialState = {
-    playlists: JSON.parse(localStorage.getItem("playlists")) || [],
+    playlists: [],
     videoId: "",
     singlePlaylist: {
       _id: "",
@@ -100,9 +110,12 @@ export const PlaylistProvider = ({ children }) => {
   );
   const [showAddPlaylistForm, setShowAddPlaylistForm] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("playlists", JSON.stringify(playlistState.playlists));
-  }, [playlistState.playlists]);
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     "playlists",
+  //     JSON.stringify(playlistState?.playlists) || []
+  //   );
+  // }, [playlistState?.playlists]);
 
   return (
     <PlaylistContext.Provider

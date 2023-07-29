@@ -10,12 +10,14 @@ export const Playlists = () => {
     setShowAddPlaylistForm,
   } = usePlaylist();
   const navigate = useNavigate();
+  console.log({ asdasdas: playlistState?.playlists });
+
   return (
     <div className="page">
       <h1 className="heading">Playlists</h1>
 
       <div className="playlists">
-        {playlistState.playlists.map((playlist) => (
+        {playlistState?.playlists?.map((playlist) => (
           <div
             className="playlist"
             onClick={() => navigate(`/playlists/${playlist._id}`)}
