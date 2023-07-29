@@ -1,0 +1,21 @@
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.category {
+  padding: 1rem;
+}
+
+.category img {
+  width: 350px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.category h3 {
+  cursor: pointer;
+}
+.category:hover {
+  color: aquamarine;
+  opacity: 0.8;
+}

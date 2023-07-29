@@ -1,0 +1,46 @@
+.video-card {
+  width: 300px;
+  margin: 3rem 1rem;
+  height: 250px;
+}
+.video-card:hover {
+  color: aquamarine;
+  opacity: 0.8;
+}
+.video-card .creator-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
+}
+.video-card .video-img {
+  width: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.video-card .details {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+/* .categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.category {
+  padding: 1rem;
+}
+
+.category img {
+  width: 350px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.category h3 {
+  cursor: pointer;
+}
+.category:hover {
+  color: aquamarine;
+  opacity: 0.8;
+} */

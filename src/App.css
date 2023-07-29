@@ -46,3 +46,8 @@
   width: 100%;
   border: 1px solid black;
 }
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
