@@ -13,14 +13,12 @@ export const VideoCard = ({
   creator,
 }) => {
   const { categoryState } = useCategory();
-  const { videoState, videoDispatch } = useVideos();
+  const { videoDispatch, isVideoInWatchLater } = useVideos();
   const findCategory = categoryState.categories.find(
     (currCategory) => currCategory.category === category
   );
   const navigate = useNavigate();
-  const isVideoInWatchLater = videoState.watchLater.find(
-    (video) => video._id === _id
-  );
+
   return (
     <div
       className="video-card"
@@ -34,12 +32,12 @@ export const VideoCard = ({
         className="watch-later-icon"
         onClick={(e) => {
           e.stopPropagation();
-          isVideoInWatchLater
+          isVideoInWatchLater(_id)
             ? videoDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: _id })
             : videoDispatch({ type: "ADD_TO_WATCH_LATER", payload: _id });
         }}
       >
-        {isVideoInWatchLater ? (
+        {isVideoInWatchLater(_id) ? (
           <i class="fa-solid fa-clock"></i>
         ) : (
           <i class="fa-regular fa-clock"></i>

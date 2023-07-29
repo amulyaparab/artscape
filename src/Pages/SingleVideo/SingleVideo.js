@@ -4,7 +4,7 @@ import { VideoCard } from "../../Components/VideoCard/VideoCard";
 import "./singleVideo.css";
 export const SingleVideo = () => {
   const { videoId } = useParams();
-  const { videoState } = useVideos();
+  const { videoState, isVideoInWatchLater, videoDispatch } = useVideos();
   const findVideo = videoState.allVideos.find(
     (video) => video._id === Number(videoId)
   );
@@ -24,7 +24,27 @@ export const SingleVideo = () => {
           <div className="single-video-details ">
             <h4>{findVideo?.title}</h4>
             <div>
-              <i class="fa-solid fa-clock"></i>
+              {isVideoInWatchLater(findVideo?._id) ? (
+                <i
+                  class="fa-solid fa-clock"
+                  onClick={() =>
+                    videoDispatch({
+                      type: "REMOVE_FROM_WATCH_LATER",
+                      payload: findVideo?._id,
+                    })
+                  }
+                ></i>
+              ) : (
+                <i
+                  class="fa-regular fa-clock"
+                  onClick={() =>
+                    videoDispatch({
+                      type: "ADD_TO_WATCH_LATER",
+                      payload: findVideo?._id,
+                    })
+                  }
+                ></i>
+              )}
               <i class="fa-solid fa-clipboard-list"></i>
               <i class="fa-solid fa-file-pen"></i>
             </div>

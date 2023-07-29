@@ -39,9 +39,12 @@ export const VideoProvider = ({ children }) => {
     watchLater: [],
   };
   const [videoState, videoDispatch] = useReducer(videoReducer, initialState);
-
+  const isVideoInWatchLater = (_id) =>
+    videoState.watchLater.find((video) => video._id === _id);
   return (
-    <VideoContext.Provider value={{ videoState, videoDispatch }}>
+    <VideoContext.Provider
+      value={{ videoState, videoDispatch, isVideoInWatchLater }}
+    >
       {children}
     </VideoContext.Provider>
   );
