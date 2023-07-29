@@ -1,7 +1,8 @@
 .video-card {
-  width: 300px;
+  width: 350px;
   margin: 3rem 1rem;
   height: 250px;
+  position: relative;
 }
 .video-card:hover {
   color: aquamarine;
@@ -14,7 +15,8 @@
   margin-right: 1rem;
 }
 .video-card .video-img {
-  width: 300px;
+  width: 350px;
+  height: 205px;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -22,6 +24,17 @@
   display: flex;
   align-items: center;
   text-align: left;
+}
+.video-card .watch-later-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+.video-card .watch-later-icon i {
+  color: navy;
 }
 /* .categories {
   display: flex;

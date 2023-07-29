@@ -8,7 +8,7 @@ export const Videos = () => {
   const videosInCurrCategory = videoState?.allVideos?.filter(
     ({ category }) => category === categoryName
   );
-  console.log(videosInCurrCategory);
+
   return (
     <div className="page">
       <h1 className="heading">{categoryName} Videos</h1>
