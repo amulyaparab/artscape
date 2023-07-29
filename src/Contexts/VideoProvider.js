@@ -5,13 +5,20 @@ const VideoContext = createContext();
 export const VideoProvider = ({ children }) => {
   const videoReducer = (videoState, action) => {
     switch (action.type) {
-      case "videoDispatch":
+      case "ADD_TO_WATCH_LATER":
         return {
           ...videoState,
           watchLater: [
             ...videoState.watchLater,
             videoState.allVideos.find(({ _id }) => _id === action.payload),
           ],
+        };
+      case "REMOVE_FROM_WATCH_LATER":
+        return {
+          ...videoState,
+          watchLater: videoState.watchLater.filter(
+            ({ _id }) => _id !== action.payload
+          ),
         };
       default:
         return videoState;

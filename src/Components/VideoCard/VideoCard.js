@@ -22,13 +22,21 @@ export const VideoCard = ({
     (video) => video._id === _id
   );
   return (
-    <div className="video-card" onClick={() => navigate(`/singleVideo/${_id}`)}>
+    <div
+      className="video-card"
+      onClick={() => {
+        console.log("hidf");
+        navigate(`/singleVideo/${_id}`);
+      }}
+    >
       <img className="video-img" src={thumbnail} alt={title} />
       <div
         className="watch-later-icon"
         onClick={(e) => {
           e.stopPropagation();
-          videoDispatch({ type: "videoDispatch", payload: _id });
+          isVideoInWatchLater
+            ? videoDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: _id })
+            : videoDispatch({ type: "ADD_TO_WATCH_LATER", payload: _id });
         }}
       >
         {isVideoInWatchLater ? (
