@@ -47,7 +47,7 @@ export const VideoCard = ({
       <div className="details">
         <img
           className="creator-img"
-          src={findCategory.thumbnail}
+          src={findCategory?.thumbnail}
           alt={category}
         />
 

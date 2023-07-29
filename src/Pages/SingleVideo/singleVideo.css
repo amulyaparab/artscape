@@ -39,3 +39,23 @@
 .more-videos::-webkit-scrollbar-thumb:hover {
   background-color: rgb(70, 165, 255);
 }
+.note {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+.note-btn {
+  padding: 0.5rem 1rem;
+  background-color: #212121;
+  color: white;
+  border: none;
+}
+.note-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}

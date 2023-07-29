@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { usePlaylist } from "../Contexts/PlaylistProvider";
+import { VideoCard } from "../Components/VideoCard/VideoCard";
 
 export const SinglePlaylist = () => {
   const { playlistId } = useParams();
@@ -17,6 +18,11 @@ export const SinglePlaylist = () => {
     <div className="page">
       <h1 className="heading">{findPlaylist?.name}</h1>
       <p>{findPlaylist?.description}</p>
+      <div>
+        {findPlaylist?.videos?.map((video) =>
+          findPlaylist?.videos?.length ? <VideoCard {...video} /> : null
+        )}
+      </div>
     </div>
   );
 };
