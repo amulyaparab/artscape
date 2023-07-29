@@ -15,7 +15,6 @@ export const SingleVideo = () => {
     usePlaylist();
   const playlistHandler = () => {
     playlistDispatch({ type: "STORE_ID", payload: videoId });
-
     setShowAddPlaylistForm(true);
   };
 
@@ -78,7 +77,7 @@ export const SingleVideo = () => {
               }}
             >
               <input
-                required
+                // required
                 value={videoState?.note}
                 onChange={(event) =>
                   videoDispatch({
@@ -88,9 +87,21 @@ export const SingleVideo = () => {
                 }
               />
               {videoState?.noteId?.length ? (
-                <button className="note-btn">Edit</button>
+                <button
+                  className="note-btn"
+                  onClick={() =>
+                    videoDispatch({ type: "EDIT_NOTE", idPayload: videoId })
+                  }
+                >
+                  Edit
+                </button>
               ) : (
-                <button className="note-btn">Add new note</button>
+                <button
+                  className="note-btn"
+                  disabled={!videoState?.note?.length}
+                >
+                  Add new note
+                </button>
               )}
             </form>
           )}

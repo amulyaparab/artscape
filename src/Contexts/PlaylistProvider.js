@@ -51,12 +51,6 @@ export const PlaylistProvider = ({ children }) => {
           },
         };
       case "DELETE_FROM_PLAYLISTS":
-        // console.log(
-        //   playlistState?.playlists?.filter(
-        //     (playlist) => playlist._id !== action.payload
-        //   )
-        // );
-
         return {
           ...playlistState,
           playlists: playlistState?.playlists?.filter(

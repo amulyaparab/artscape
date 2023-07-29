@@ -86,13 +86,14 @@ export const VideoProvider = ({ children }) => {
               ? {
                   ...video,
                   notes: video.notes.map((note) =>
-                    note._id === action.payload
-                      ? { ...note, content: action.contentPayload }
+                    note._id === videoState?.noteId
+                      ? { ...note, content: videoState.note }
                       : note
                   ),
                 }
               : video
           ),
+          note: "",
           noteId: "",
         };
       case "STORE_NOTE":
@@ -121,6 +122,7 @@ export const VideoProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("allVideos", JSON.stringify(videoState.allVideos));
   }, [videoState.allVideos]);
+  console.log(videoState.noteId);
   return (
     <VideoContext.Provider
       value={{ videoState, videoDispatch, isVideoInWatchLater }}
