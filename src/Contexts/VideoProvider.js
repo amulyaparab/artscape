@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import { videos } from "../Database/videoData";
 import { v4 as uuid } from "uuid";
+import { useEffect } from "react";
 const VideoContext = createContext();
 
 export const VideoProvider = ({ children }) => {
@@ -102,16 +103,24 @@ export const VideoProvider = ({ children }) => {
     }
   };
   const initialState = {
-    allVideos: videos.map((video) => ({ ...video, notes: [] })),
+    allVideos:
+      JSON.parse(localStorage.getItem("allVideos")) ||
+      videos.map((video) => ({ ...video, notes: [] })),
     filteredVideos: videos,
-    watchLater: [],
+    watchLater: JSON.parse(localStorage.getItem("watchLater")) || [],
     noteId: "",
     note: "",
   };
   const [videoState, videoDispatch] = useReducer(videoReducer, initialState);
   const isVideoInWatchLater = (_id) =>
     videoState.watchLater.find((video) => video._id === _id);
-  console.log(videoState);
+
+  useEffect(() => {
+    localStorage.setItem("watchLater", JSON.stringify(videoState.watchLater));
+  }, [videoState.watchLater]);
+  useEffect(() => {
+    localStorage.setItem("allVideos", JSON.stringify(videoState.allVideos));
+  }, [videoState.allVideos]);
   return (
     <VideoContext.Provider
       value={{ videoState, videoDispatch, isVideoInWatchLater }}

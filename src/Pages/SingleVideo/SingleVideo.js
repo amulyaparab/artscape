@@ -73,7 +73,6 @@ export const SingleVideo = () => {
               className="note-form"
               onSubmit={(event) => {
                 event.preventDefault();
-
                 videoDispatch({ type: "ADD_NOTES", idPayload: videoId });
                 setShowNotesForm(false);
               }}

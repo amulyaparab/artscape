@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useVideos } from "./VideoProvider";
+import { useEffect } from "react";
 const PlaylistContext = createContext();
 
 export const PlaylistProvider = ({ children }) => {
@@ -83,7 +84,7 @@ export const PlaylistProvider = ({ children }) => {
     }
   };
   const initialState = {
-    playlists: [],
+    playlists: JSON.parse(localStorage.getItem("playlists")) || [],
     videoId: "",
     singlePlaylist: {
       _id: "",
@@ -98,6 +99,10 @@ export const PlaylistProvider = ({ children }) => {
     initialState
   );
   const [showAddPlaylistForm, setShowAddPlaylistForm] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("playlists", JSON.stringify(playlistState.playlists));
+  }, [playlistState.playlists]);
 
   return (
     <PlaylistContext.Provider

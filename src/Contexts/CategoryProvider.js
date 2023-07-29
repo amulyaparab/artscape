@@ -17,6 +17,7 @@ export const CategoryProvider = ({ children }) => {
     categoryReducer,
     initialState
   );
+
   return (
     <CategoryContext.Provider value={{ categoryState, categoryDispatch }}>
       {children}
